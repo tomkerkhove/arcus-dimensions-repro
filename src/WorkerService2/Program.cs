@@ -33,7 +33,7 @@ namespace WorkerService2
         {
             if (logEvent.MessageTemplate.Text.StartsWith("Metric"))
             {
-                bool contextFound = logEvent.Properties.TryGetAsDictionary("Context", out IReadOnlyDictionary<ScalarValue, LogEventPropertyValue> context);
+                bool contextFound = logEvent.Properties.TryGetAsDictionary("EventDescription", out IReadOnlyDictionary<ScalarValue, LogEventPropertyValue> context);
                 if (contextFound)
                 {
                     foreach (KeyValuePair<ScalarValue, LogEventPropertyValue> contextProperty in context)
