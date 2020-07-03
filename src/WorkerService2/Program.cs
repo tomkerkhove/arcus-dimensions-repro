@@ -22,7 +22,12 @@ namespace WorkerService2
                         .WriteTo.Sink<CustomSink>()
                         .CreateLogger();
 
-                    services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(logger));
+                    services.AddLogging(loggingBuilder =>
+                    {
+                        // Fix: Uncomment this
+                        // loggingBuilder.ClearProviders();
+                        loggingBuilder.AddSerilog(logger);
+                    });
                     services.AddHostedService<Worker>();
                 });
     }
